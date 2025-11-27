@@ -13,8 +13,8 @@ pipeline {
         stage('Install Dependencies (CI Stage)') {
             steps {
                 sh '''
-                    echo "Installing dependencies..."
-                    npm install
+                echo "Installing dependencies..."
+                npm install
                 '''
             }
         }
@@ -22,8 +22,8 @@ pipeline {
         stage('Run Tests (CI Stage)') {
             steps {
                 sh '''
-                    echo "Running test cases..."
-                    npm test --passWithNoTests || true
+                echo "Running test cases..."
+                npm test --passWithNoTests || true
                 '''
             }
         }
@@ -31,8 +31,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh '''
-                    echo "Building Docker image..."
-                    sudo docker build -t prime-app .
+                echo "Building Docker image..."
+                sudo docker build -t prime-app .
                 '''
             }
         }
@@ -40,8 +40,8 @@ pipeline {
         stage('Stop Old Container') {
             steps {
                 sh '''
-                    echo "Stopping old container..."
-                    sudo docker stop prime-container || true
+                echo "Stopping old container if running..."
+                sudo docker stop prime-container || true
                 '''
             }
         }
@@ -49,8 +49,8 @@ pipeline {
         stage('Remove Old Container') {
             steps {
                 sh '''
-                    echo "Removing old container..."
-                    sudo docker rm prime-container || true
+                echo "Removing old container..."
+                sudo docker rm prime-container || true
                 '''
             }
         }
@@ -58,8 +58,8 @@ pipeline {
         stage('Deploy New Container') {
             steps {
                 sh '''
-                    echo "Deploying new container..."
-                    sudo docker run -d -p 3000:3000 --name prime-container prime-app
+                echo "Deploying new container..."
+                sudo docker run -d -p 80:80 --name prime-container prime-app
                 '''
             }
         }
