@@ -5,7 +5,7 @@ const abc = [
   { id: 3, name: "Documentary" },
   { id: 4, name: "Drama" },
   { id: 5, name: "Fantasy" },
-  { id: 6, name: "HORROR" },
+  { id: 6, name: "comedy" },
   { id: 7, name: "International" },
   { id: 8, name: "Kids" },
   { id: 9, name: "Music videos and concerts" },
@@ -14,5 +14,6 @@ const abc = [
 ];
 
 export default abc;
+
 
 
